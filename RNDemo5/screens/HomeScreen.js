@@ -15,28 +15,62 @@ import { MonoText } from '../components/StyledText';
 //import test from '../screens/test';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+//import StackViewStyleInterpolator from 'react-navigation-stack/lib/module/views/StackView/StackViewStyleInterpolator.js'
 export default class HomeScreen extends Component{
+  static navigationOptions = {
+    header:null,
+    /* No more header config here! */
+
+      // transitionConfig:()=>({
+      //     // 只要修改最后的forVertical就可以实现不同的动画了。
+      //     screenInterpolator:StackViewStyleInterpolator.forHorizontal,
+      // })
+  };
   constructor(props){
     super(props);
     this.state = {
-
+      latitude:23,//纬度
+      longitude:113,//经度
+      altitude:100//海拔
     };
     // 在ES6中，如果在自定义的函数里使用了this关键字，则需要对其进行“绑定”操作，否则this的指向会变为空
     // 像下面这行代码一样，在constructor中使用bind是其中一种做法（还有一些其他做法，如使用箭头函数等）
     this.props.navigation = this.props.navigation.navigate.bind(this);
   }
+  PositionSend(){
+      
+    const{latitude,longitude,altitude}=this.state
+    
+
+    alert(this.props.navigation.getParam('token', 'default'))
+    fetch("https://www.kingdom174.work/position?token="+this.props.navigation.getParam('token', 'default')+"&latitude="+latitude+"&longitude="+longitude+"&altitude="+altitude,{method:'POST'});  //发送就完事
+    
+  }
+
   render(){
+  
   return (
     <View style={styles.container}>
       <ScrollView
         style={styles.container}
         contentContainerStyle={styles.contentContainer}>
         <View>
+
         <Button
-          title="Go to Details"
-          onPress={() => this.props.navigation.navigate('Login')}
-          
+          title="Send position to server"
+          onPress={()=>{this.PositionSend();  }}
         />
+        <Button
+          title="Sign out"
+          onPress={() => {this.props.navigation.navigate('Auth');
+          }}
+        />
+        <Button
+          title="Drawer"
+          onPress={() => {this.props.navigation.navigate('Options');
+          }}
+        />
+        
         
         </View>
 
@@ -91,10 +125,6 @@ export default class HomeScreen extends Component{
   );
           }
 }
-
-HomeScreen.navigationOptions = {
-  header: null,
-};
 
 
 function DevelopmentModeNotice() {

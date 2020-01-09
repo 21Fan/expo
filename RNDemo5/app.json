@@ -26,5 +26,12 @@
     "ios": {
       "supportsTablet": true
     }
+  },
+  "android":{
+    "name":"com.amap.api.v2.apikey",
+    "value":"7cb61bbbd311ea9d02f0dd8ffa7b33e8"
+
   }
+  
+
 }

@@ -12,12 +12,25 @@ const config = Platform.select({
   default: {},
 });
 
+
 const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
-    Login:LoginScreen,
-  },
-  config
+  }
+  // {
+  // initialRouteName: 'Home',
+  // /* The header config from HomeScreen is now here */
+  // defaultNavigationOptions: {
+  // headerStyle: {
+  // backgroundColor: '#f4511e',
+  // },
+  // headerTintColor: '#fff',
+  // headerTitleStyle: {
+  // fontWeight: 'bold',
+  // },
+  // },
+  // }
+  
 );
 
 HomeStack.navigationOptions = {

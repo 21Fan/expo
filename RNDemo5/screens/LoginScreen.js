@@ -1,8 +1,12 @@
 import  React,{Component} from 'react'
-import {Text,View,TextInput,StyleSheet,Botton ,ActivityIndicator} from 'react-native';
-import { createStackNavigator, createAppContainer } from 'react-navigation'
+import {Text,View,TextInput,StyleSheet} from 'react-native';
+
 
 export default class LoginScreen extends Component{
+    static navigationOptions = {
+        title: '登录',
+        /* No more header config here! */
+      };
     constructor(props){
         super(props)
         this.state={
@@ -13,17 +17,7 @@ export default class LoginScreen extends Component{
 
         }
     }
-    // componentDidMount(){}
-    //  Login(){
-    //         const{username,password}=this.state
-    //         if(username===password&&username==='admin')
-    //         {
-    //             alert('登陆成功')
-    //             this.props.navigation.navigate('MainMenu')
-    //         }else{
-    //             alert('账号或密码错误')
-    //         }
-    // }
+
     Test(){
         
 
@@ -40,7 +34,11 @@ export default class LoginScreen extends Component{
               token:string
             
             })
-            if(string=="密码错误")alert(string)
+            if(string=="密码错误"||string=="用户名不存在")alert(string)
+            else{
+                this.props.navigation.push('Home', {
+                    'token': string,'transition':'forHorizontal'});
+            }
         })
         .catch(error => console.error('Error:', error));
         
@@ -53,11 +51,13 @@ export default class LoginScreen extends Component{
                 <TextInput style={styles.input} 
                 onChangeText={(username)=>this.setState({username})}
                 value={this.state.username}
-                placeholder={'请输入用户名(admin)'}/>
+                
+                placeholder={'请输入用户名'}/>
                 <TextInput style={styles.input} 
                 onChangeText={(password)=>this.setState({password})}
                 value={this.state.password}
-                placeholder={'请输入密码(admin)'}/>
+                secureTextEntry={true}//文本框会遮住之前输入的文字
+                placeholder={'请输入密码'}/>
                 <Text style={styles.login} onPress={()=>{this.Test()}}>Login</Text>
                 
             </View>
@@ -93,7 +93,7 @@ const styles=StyleSheet.create(
             fontWeight:'bold',
             color: 'white',
             margin: 20,
-            backgroundColor: 'orange',
+            backgroundColor: 'green',
             width: 150,
             height: 50,
             lineHeight: 50,

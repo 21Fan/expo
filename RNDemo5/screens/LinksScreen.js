@@ -46,6 +46,7 @@ export default class LinksScreen extends Component {
         keyExtractor={item => item.id}
       />
     );
+
   }
 
   renderLoadingView() {

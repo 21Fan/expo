@@ -1,8 +1,11 @@
 import React from 'react';
 import { FlatList, ActivityIndicator, Text, View  } from 'react-native';
-
+import MapView from 'react-native-maps';
 export default class SettingsScreen extends React.Component {
-
+  static navigationOptions = {
+    header: null,
+    
+  };
   constructor(props){
     super(props);
    
@@ -58,8 +61,14 @@ export default class SettingsScreen extends React.Component {
     return(
       <View style={{flex: 1, paddingTop:20}}>
         <Text>{this.state.token}</Text>
-        
+        <MapView
+  coordinate={{
+    latitude: 39.91095,
+    longitude: 116.37296,
+  }}
+/>
       </View>
+      
     );
   }
 }
