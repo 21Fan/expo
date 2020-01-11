@@ -6,6 +6,10 @@ const REQUEST_URL =
   "https://raw.githubusercontent.com/facebook/react-native/0.51-stable/docs/MoviesExample.json";
 
 export default class LinksScreen extends Component {
+  static navigationOptions = {
+    header:null,
+
+  };
   constructor(props) {
     super(props);
     this.state = {
