@@ -70,6 +70,11 @@ export default class HomeScreen extends Component{
           onPress={() => {this.props.navigation.navigate('Options');
           }}
         />
+        <Button
+          title="反馈"
+          onPress={() => {this.props.navigation.navigate('Feedback');
+          }}
+        />
         
         
         </View>

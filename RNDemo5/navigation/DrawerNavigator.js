@@ -25,6 +25,7 @@ const CustomDrawerContentComponent = (props) => (
     <ScrollView>
         <SafeAreaView style={styles.container} >
             <View style={{height:100,backgroundColor:'red'}}></View>
+            <View style={styles.transitionView}></View>
             <DrawerItems {... props} />  
         </SafeAreaView>
     </ScrollView>
@@ -33,7 +34,7 @@ const DrawerNavigator = createDrawerNavigator(
     {
         // You could add another route here for authentication.
         // Read more at https://reactnavigation.org/docs/en/auth-flow.html
-
+        
         Main: {
           screen: MainTabNavigator,
           navigationOptions: {
@@ -95,5 +96,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  }});
+  },
+  transitionView: {
+    height: 5,
+    backgroundColor: 'rgba(230,230,230, .5)'
+},
+});
 export default DrawerNavigator;

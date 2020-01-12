@@ -24,6 +24,7 @@ export default class Mine extends PureComponent {
         super(props);
         
         this.state = {
+            VIPlevel:'黄金',
             rotation: new Animated.Value(0),
             scale: new Animated.Value(1),
             translateY: new Animated.Value(10),
@@ -33,21 +34,23 @@ export default class Mine extends PureComponent {
 
     settingData = [
         {
-            leftText: '我的消息',
-            rightText: '评论我的跟帖/通知',
+            leftText: '黄金',
+            rightText: '进入会员主页',
             onPress(){
                 alert(123)
             }
         },
         {
-            leftText: '我的关注',
+            leftText: '实名认证',
+            rightText:'待认证'
         },
         {
-            leftText: '金币商城',
-            rightText: '踏春出行，新品幸运享不停',
+            leftText: '车主认证',
+            rightText: '待认证',
         },
         {
-            leftText: '活动广场',
+            leftText: '学生认证',
+            rightText: '待认证',
         },
         {
             leftText: '我的钱包',
@@ -132,14 +135,11 @@ export default class Mine extends PureComponent {
                 <View style={styles.headContainer}>
                     {/* 夜间/签到 */}
                     <View style={styles.headTopContainer}>
-                        <TouchableOpacity style={styles.topBtnStyle} activeOpacity={0.9} onPress={() => {alert('夜间')}}>
-                            <Image source={require('../assets/images/i_night.png')} style={styles.headTopImg} resizeMode={'contain'} />
-                            <Text style={styles.headTopText}>夜间</Text>
-                        </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.topBtnStyle} activeOpacity={0.9} onPress={() => {alert('签到')}}>
-                            <Image source={require('../assets/images/i_sign.png')} style={styles.headTopImg} resizeMode={'contain'} />
-                            <Text style={styles.headTopText}>夜间</Text>
+
+                        <TouchableOpacity style={styles.topBtnStyle} activeOpacity={1} onPress={() => {alert('编辑资料')}}>
+                            <Image source={require('../assets/images/i_mine.png')} style={styles.headTopImg} resizeMode={'contain'} />
+                            <Text style={styles.headTopText}>编辑资料</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -309,7 +309,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-        width: 70,
+        width: 100,
         height: 30,
         borderColor: '#e6e6e6',
         borderWidth: 1,
